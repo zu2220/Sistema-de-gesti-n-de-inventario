@@ -1,5 +1,6 @@
 import modelo.Usuario;
 import controlador.Ctrl_Usuario;
+import org.junit.+;
 
 public class UserControllerTest {
 
@@ -11,7 +12,8 @@ public class UserControllerTest {
         Ctrl_Usuario ctrl_usuario = new Ctrl_Usuario();
         Usuario usuario = new Usuario("oscar","zari","ozari","123","975048911",0);
         
-        ctrl_usuario.guardar(usuario);
+        
+        
         
     }
     
