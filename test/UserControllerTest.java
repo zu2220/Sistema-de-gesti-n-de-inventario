@@ -1,20 +1,37 @@
 import modelo.Usuario;
 import controlador.Ctrl_Usuario;
-import org.junit.+;
+import org.junit.Test;
+import org.junit.BeforeClass;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import java.sql.*;
 
 public class UserControllerTest {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Ctrl_Usuario ctrl_usuario = new Ctrl_Usuario();
-        Usuario usuario = new Usuario("oscar","zari","ozari","123","975048911",0);
-        
-        
-        
-        
+    private static Ctrl_Usuario ctrl_usuario;
+    private static Usuario usuario;
+    
+    @BeforeClass
+    public void setUpConnection(){
+        ctrl_usuario = new Ctrl_Usuario();
+        usuario = new Usuario(
+        "oscar",
+        "zari",
+        "ozari",
+        "123",
+        "123456789",
+        0);
     }
     
+        // TODO code application logic here
+    @Test
+    public void testGuardarUsuario() throws Exception {
+        boolean flag = ctrl_usuario.guardar(usuario);
+        Assert.assertTrue(flag);
+    }
+    
+    @AfterClass
+    public static void tearDown() throws Exception {
+        ctrl_usuario.eliminar(usuario.getIdUsuario());
+    }
+        
 }
