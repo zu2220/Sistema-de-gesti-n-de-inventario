@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Usuario;
@@ -25,7 +26,7 @@ public class Ctrl_Usuario {
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement consulta = cn.prepareStatement("insert into tb_usuario values(?,?,?,?,?,?,?)");
-            consulta.setInt(1, 0);//id
+            consulta.setInt(1,0);
             consulta.setString(2, objeto.getNombre());
             consulta.setString(3, objeto.getApellido());
             consulta.setString(4, objeto.getUsuario());
@@ -125,4 +126,18 @@ public class Ctrl_Usuario {
         }
         return respuesta;
     }
+    
+    /*public List<Usuario> obtenerUsuarios(){
+        Connection cn = Conexion.conectar();
+        String query = "select* from tb_usuario limit 10;";
+        try{
+            PreparedStatement consulta = cn.prepareStatement(query);
+            ResultSet rs = consulta.executeQuery();
+            
+            if(rs.)
+        } catch(SQLException e){
+            System.out.println("Error al obtener usuarios: "+e);
+        }
+        
+    }*/
 }
