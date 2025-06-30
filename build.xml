@@ -9,7 +9,55 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="SistemaDeVentasGrupo1" default="default" basedir=".">
     <description>Builds, tests, and runs the project SistemaDeVentasGrupo1.</description>
-    <import file="nbproject/build-impl.xml"/>
+    <property name="src.dir" value="src"/>
+    <property name="test.dir" value="test"/>
+    <property name="build.classes.dir" value="build/classes"/>
+    <property name="lib.dir" value="lib"/>
+
+    <!-- Crear carpeta de compilación -->
+    <target name="init">
+        <mkdir dir="${build.classes.dir}"/>
+    </target>
+
+    <!-- Compilar clases principales -->
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" includeantruntime="false">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Compilar tests -->
+    <target name="compile-tests" depends="compile">
+        <javac srcdir="${test.dir}" destdir="${build.classes.dir}" includeantruntime="false">
+            <classpath>
+                <pathelement path="${build.classes.dir}"/>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Ejecutar tests JUnit -->
+    <target name="test" depends="compile-tests">
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <pathelement path="${build.classes.dir}"/>
+                <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+            <batchtest>
+                <fileset dir="${test.dir}">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
