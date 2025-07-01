@@ -125,7 +125,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         txt_cliente_buscar = new javax.swing.JTextField();
         txt_cantidad = new javax.swing.JTextField();
         jButton_busca_cliente = new javax.swing.JButton();
-        jButton_añadir_producto = new javax.swing.JButton();
+        jButton_anadir_producto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_productos = new javax.swing.JTable();
@@ -193,14 +193,14 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton_busca_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 80, -1));
 
-        jButton_añadir_producto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_añadir_producto.setText("Añadir Productos");
-        jButton_añadir_producto.addActionListener(new java.awt.event.ActionListener() {
+        jButton_anadir_producto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton_anadir_producto.setText("Añadir Productos");
+        jButton_anadir_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_añadir_productoActionPerformed(evt);
+                jButton_anadir_productoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_añadir_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 150, -1));
+        getContentPane().add(jButton_anadir_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 150, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -329,7 +329,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton_busca_clienteActionPerformed
 
-    private void jButton_añadir_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_añadir_productoActionPerformed
+    private void jButton_anadir_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anadir_productoActionPerformed
 
         String combo = this.jComboBox_producto.getSelectedItem().toString();
         //validar que seleccione un producto
@@ -395,7 +395,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         }
         //llamar al metodo
         this.listaTablaProductos();
-    }//GEN-LAST:event_jButton_añadir_productoActionPerformed
+    }//GEN-LAST:event_jButton_anadir_productoActionPerformed
 
     private void jButton_calcular_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_calcular_cambioActionPerformed
         if (!txt_efectivo.getText().isEmpty()) {
@@ -525,7 +525,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_RegistrarVenta;
-    private javax.swing.JButton jButton_añadir_producto;
+    private javax.swing.JButton jButton_anadir_producto;
     private javax.swing.JButton jButton_busca_cliente;
     private javax.swing.JButton jButton_calcular_cambio;
     private javax.swing.JComboBox<String> jComboBox_cliente;
