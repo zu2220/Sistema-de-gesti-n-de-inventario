@@ -23,7 +23,7 @@ import modelo.Usuario;
  */
 public class InterGestionarUsuario extends javax.swing.JInternalFrame {
 
-    private int idUsuario = 0;
+    private String idUsuario = "";
 
     public InterGestionarUsuario() {
         initComponents();
@@ -179,8 +179,8 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         Usuario usuario = new Usuario();
         Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-
-        if (idUsuario == 0) {
+        int isRowSelected = jTable_usuarios.getSelectedRow();
+        if (isRowSelected == -1) {
             JOptionPane.showMessageDialog(null, "¡Seleccione un Usuario!");
         } else {
             if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
@@ -198,7 +198,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "¡Actualizacion Exitosa!");
                     this.Limpiar();
                     this.CargarTablaUsuarios();
-                    idUsuario = 0;
+                    idUsuario = "";
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "¡Error al Actualizar usuario!");
@@ -210,14 +210,18 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
 
         Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-        if (idUsuario == 0) {
+        int isRowSelected = jTable_usuarios.getSelectedRow();
+      
+        if (isRowSelected == -1) {
             JOptionPane.showMessageDialog(null, "¡Seleccione un usuario!");
         } else {
-            if (!controlUsuario.eliminar(idUsuario)) {
+            String selectedUsersId = jTable_usuarios.getValueAt(isRowSelected, 0).toString();
+            System.out.println(selectedUsersId);
+            if (!controlUsuario.eliminar(selectedUsersId)) {
                 JOptionPane.showMessageDialog(null, "¡Usuario Eliminado!");
                 this.CargarTablaUsuarios();
                 this.Limpiar();
-                idUsuario = 0;
+                idUsuario = "";
             } else {
                 JOptionPane.showMessageDialog(null, "¡Error al eliminar usuario!");
                 this.Limpiar();
@@ -307,7 +311,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
                 int columna_point = 0;
 
                 if (fila_point > -1) {
-                    idUsuario = (int) model.getValueAt(fila_point, columna_point);
+                    idUsuario = model.getValueAt(fila_point, columna_point).toString();
                     EnviarDatosUsuarioSeleccionado(idUsuario);//metodo
                 }
             }
@@ -317,7 +321,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
 
     // Metodo que envia datos seleccionados
     
-    private void EnviarDatosUsuarioSeleccionado(int idUsuario) {
+    private void EnviarDatosUsuarioSeleccionado(String idUsuario) {
         try {
             Connection con = Conexion.conectar();
             PreparedStatement pst = con.prepareStatement(

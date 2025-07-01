@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.UUID;
+
 /**
  *
  *  @author Grupo 1
@@ -7,7 +9,7 @@ package modelo;
 public class Usuario {
 
     //Atributos
-    private int idUsuario;
+    private String idUsuario;
     private String nombre;
     private String apellido;
     private String usuario;
@@ -17,7 +19,7 @@ public class Usuario {
 
     //Contructor vacío
     public Usuario() {
-        this.idUsuario = 0;
+        this.idUsuario = UUID.randomUUID().toString();
         this.nombre = "";
         this.apellido = "";
         this.usuario = "";
@@ -27,6 +29,7 @@ public class Usuario {
     }
 
     public Usuario(String nombre, String apellido, String usuario, String password, String telefono, int estado) {
+        this.idUsuario = UUID.randomUUID().toString();
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
@@ -36,12 +39,12 @@ public class Usuario {
     }
     
 
-    //set and get
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    //set and get
+    public void setIdUsuario(String idUsuario) {    
         this.idUsuario = idUsuario;
     }
 

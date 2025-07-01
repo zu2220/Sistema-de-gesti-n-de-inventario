@@ -13,7 +13,7 @@ public class UserControllerTest {
     private static Usuario usuario;
     
     @BeforeClass
-    public void setUpConnection(){
+    public static void setUpConnection(){
         ctrl_usuario = new Ctrl_Usuario();
         usuario = new Usuario(
         "oscar",

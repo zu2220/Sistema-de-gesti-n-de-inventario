@@ -26,7 +26,7 @@ public class Ctrl_Usuario {
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement consulta = cn.prepareStatement("insert into tb_usuario values(?,?,?,?,?,?,?)");
-            consulta.setInt(1,0);
+            consulta.setString(1,objeto.getIdUsuario());
             consulta.setString(2, objeto.getNombre());
             consulta.setString(3, objeto.getApellido());
             consulta.setString(4, objeto.getUsuario());
@@ -84,7 +84,7 @@ public class Ctrl_Usuario {
     
     //metodo para actualizar un usuario
     
-    public boolean actualizar(Usuario objeto, int idUsuario) {
+    public boolean actualizar(Usuario objeto, String idUsuario) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
         try {
@@ -109,12 +109,12 @@ public class Ctrl_Usuario {
 
     // metodo para eliminar un usuario
   
-    public boolean eliminar(int idUsuario) {
+    public boolean eliminar(String idUsuario) {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
         try {
             PreparedStatement consulta = cn.prepareStatement(
-                    "delete from tb_usuario where idUsuario ='" + idUsuario + "'");
+                    "delete from tb_usuario where id ='" + idUsuario + "'");
             consulta.executeUpdate();
 
             if (consulta.executeUpdate() > 0) {
