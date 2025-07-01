@@ -1,3 +1,5 @@
+package tests;
+
 import modelo.Usuario;
 import controlador.Ctrl_Usuario;
 import org.junit.Test;

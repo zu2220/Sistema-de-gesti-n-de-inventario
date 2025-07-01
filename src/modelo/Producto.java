@@ -39,6 +39,15 @@ public class Producto {
         this.idCategoria = idCategoria;
         this.estado = estado;
     }
+    
+    //Constructor para hacer tests
+
+    public Producto(String nombre, int cantidad, double precio) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+    
 
     //Set and get
 
