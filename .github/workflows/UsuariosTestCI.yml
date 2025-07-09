@@ -14,10 +14,10 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: rootpass
-          MYSQL_DATABASE: db_usuario
-          MYSQL_USER: testuser
-          MYSQL_PASSWORD: testpass
+          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_DATABASE: db_sitemaventas
+          MYSQL_USER: root
+          MYSQL_PASSWORD: admin
         ports:
           - 3306:3306
         options: >-
@@ -38,11 +38,11 @@ jobs:
 
       - name: Wait for MySQL to be ready
         run: sleep 20
-      - name: Create Users table
+      - name: Create tb_usuario table
         run: |
           sudo apt-get install -y mysql-client
-          mysql -h 127.0.0.1 -u testuser -ptestpass testdb -e "
-          CREATE TABLE IF NOT EXISTS usuarios (
+          mysql -h 127.0.0.1 -u root -ptestpass admin -e "
+          CREATE TABLE IF NOT EXISTS tb_usuario (
           id varchar(255) PRIMARY KEY,
           nombre VARCHAR(100),
           apellido VARCHAR(100),
@@ -58,6 +58,6 @@ jobs:
       - name: Run Ant tests
         run: ant test
         env:
-          DB_URL: jdbc:mysql://localhost:3306/testdb
-          DB_USERNAME: testuser
-          DB_PASSWORD: testpass
+          DB_URL: jdbc:mysql://localhost:3306/bd_sitemaventas
+          DB_USERNAME: root
+          DB_PASSWORD: admin
