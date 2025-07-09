@@ -16,8 +16,8 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: rootpass
           MYSQL_DATABASE: db_sitemaventas
-          MYSQL_USER: root
-          MYSQL_PASSWORD: admin
+          MYSQL_USER: testus
+          MYSQL_PASSWORD: testpass
         ports:
           - 3306:3306
         options: >-
@@ -41,7 +41,7 @@ jobs:
       - name: Create tb_usuario table
         run: |
           sudo apt-get install -y mysql-client
-          mysql -h 127.0.0.1 -u root -ptestpass admin -e "
+          mysql -h 127.0.0.1 -u testus -p testpass -e "
           CREATE TABLE IF NOT EXISTS tb_usuario (
           id varchar(255) PRIMARY KEY,
           nombre VARCHAR(100),
