@@ -38,7 +38,20 @@ jobs:
 
       - name: Wait for MySQL to be ready
         run: sleep 20
-
+      - name: Create Users table
+        run: |
+          sudo apt-get install -y mysql-client
+          mysql -h 127.0.0.1 -u testuser -ptestpass testdb -e "
+          CREATE TABLE IF NOT EXISTS usuarios (
+          id varchar(255) PRIMARY KEY,
+          nombre VARCHAR(100),
+          apellido VARCHAR(100),
+          usuario VARCHAR(50),
+          password VARCHAR(100),
+          telefono VARCHAR(20),
+          estado BOOLEAN
+          );
+          "
       - name: Install Ant
         run: sudo apt-get update && sudo apt-get install -y ant
 
