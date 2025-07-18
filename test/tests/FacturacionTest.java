@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import modelo.IGV;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -22,18 +23,17 @@ public class FacturacionTest {
     @Test
     public void testCalcularIGV() throws Exception{
         
+        IGV igv = new IGV();
 
-        // datos de producto ficticio
-        double precio_producto = 9;
-        double cantidad_producto = 5;
-        
-        // porcentaje igv
-        double porcentaje_iva = 0.18;
-        
+        List<Producto> productos = new ArrayList<>(Arrays.asList(
+            new Producto("mazamorra morada", 4, 2.5),
+            new Producto("arroz con leche", 2, 1.5)
+        ));
+                
         //calculo del igv
-        double igv = (precio_producto * cantidad_producto) * porcentaje_iva;
+        double total_igv = igv.calcularIGV(productos);
         
-        Assert.assertEquals(8.1, igv, DELTA);
+        Assert.assertEquals(2.34, total_igv, DELTA);
     
     }
     
