@@ -398,28 +398,41 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton_anadir_productoActionPerformed
 
     private void jButton_calcular_cambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_calcular_cambioActionPerformed
-        if (!txt_efectivo.getText().isEmpty()) {
-            //validamos que el usuario no ingrese otros caracteres no numericos 
-            boolean validacion = validarDouble(txt_efectivo.getText());
-            if (validacion == true) {
-                //validar que el efectivo sea mayor a cero
-                double efc = Double.parseDouble(txt_efectivo.getText().trim());
-                double top = Double.parseDouble(txt_total_pagar.getText().trim());
-
-                if (efc < top) {
-                    JOptionPane.showMessageDialog(null, "El Dinero en efectivo no es suficiente");
-                } else {
-                    double cambio = (efc - top);
-                    double cambi = (double) Math.round(cambio * 100d) / 100;
-                    String camb = String.valueOf(cambi);
-                    txt_cambio.setText(camb);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No de admiten caracteres no numericos");
-            }
-        } else {
+        // validamos que el campo para ingresar el efectivo no está vacio
+        if(txt_efectivo.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Ingrese dinero en efectivo para calcular cambio");
+            return;
         }
+        
+        // Validamos que se ingresen caracteres numéricos
+        if(!validarDouble(txt_efectivo.getText())){
+            JOptionPane.showMessageDialog(null, "No de admiten caracteres no numericos");
+            return;
+        }
+        
+        // Variable que almacena el efectivo con el que el cliente va a pagar
+        double efctv = Double.parseDouble(txt_efectivo.getText().trim());
+        
+        // Variable que almacena el precio total de los productos
+        double prcTtl = Double.parseDouble(txt_total_pagar.getText().trim());
+
+        // Validamos que el efectivo con el que va a pagar el cliente sea mayor el precio total de los producto que va a comprar
+        if(prcTtl > efctv){
+            JOptionPane.showMessageDialog(null, "El Dinero en efectivo no es suficiente");
+        }
+        
+        // Variable que almacena el vuelto
+        double vlt = efctv - prcTtl;
+        
+        // Redondeamos el valor de la variable quedandonos solo con los primero decimales
+        vlt = (double)Math.round(vlt * 100d) / 100;
+        
+        // Seteamos el valor del vuelto el campo respectivo del formulario
+        txt_cambio.setText(String.valueOf(vlt));
+        
+        
+        
+
     }//GEN-LAST:event_jButton_calcular_cambioActionPerformed
     int idArrayList = 0;
     private void jTable_productosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_productosMouseClicked
