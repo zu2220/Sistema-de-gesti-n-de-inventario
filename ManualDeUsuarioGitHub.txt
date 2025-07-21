@@ -1,0 +1,16 @@
+//En este manual de usuario se detalla todas las consideraciones para quienes quieren probar o implmentar nuestro software
+
+//Requisitos previos
+1- Tener instalado Java 17 en su PC
+2- Tener instalado el IDE Apache Netbeans versión 15
+3- Tener instalado MySQL Community Server versión 8
+4- Tener instalado MySQL Workbench versión 8
+5- Haber creado una instancia de conexión en MySQL Workbench. Los datos de la instancia son los siguientes:
+  a) nombre del servidor: server246880276.mysql.database.azure.com
+  b) nombre de usuario: sombersnail5
+  c) contraseña: PclU0U1wf1e1YPdOhfgUfQ
+
+//Notas importantes
+1- La última versión del software siempre será subida a la rama master
+2- Cada vez que se haga un push o un pull a esta rama, los scripts de CI y CD se van a ejecutar
+3- Es necesario que, para conectarse a la bd, se solicite la conexión al administrador del servidor enviándole su ip pública para que este configure su acceso.
